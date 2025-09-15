@@ -1,12 +1,12 @@
-# Copilot Java
-Demo laboratory for VSCode Copilot course Java edition
+# Inetum Copilot Java
+Demo laboratory for VSCode Copilot course Java edition for Inetum
 
 ## Dev workflow
 
 ```bash
 # Clone repository
-git clone https://github.com/AlbertoBasaloLabs/copilot-java.git
-cd copilot-java
+git clone https://github.com/AlbertoBasaloAcademy/inetum_copilot-java.git
+cd inetum_copilot-java
 # Open in VSCode
 code .
 # Open terminal 

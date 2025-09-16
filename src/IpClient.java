@@ -6,9 +6,17 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandler;
 
 public class IpClient {
+  public static void printIp(IpApiResponse ipApi) {
+    System.out.println("## Your IP address is " + ipApi.ip());
+    String location = ipApi.city() + ", " + ipApi.region() + ", " + ipApi.country_name();
+    System.out.println("- Location: " + location);
+    String coordinates = "- Coordinates: Lat " + ipApi.latitude() + ", Long " + ipApi.longitude();
+    System.out.println(coordinates);
+  }
 
-  public static void fetchIp() {
+  public static IpApiResponse fetchIp() {
     HttpClient client = HttpClient.newHttpClient();
+
     BodyHandler<String> bodyHandlers = HttpResponse.BodyHandlers.ofString();
     HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("https://ipapi.co/json/"))
@@ -23,11 +31,7 @@ public class IpClient {
 
       if (status >= 200 && status < 300) {
         IpApiResponse ipApi = IpApiResponse.fromJson(body);
-        System.out.println("## Your IP address is " + ipApi.ip());
-        String location = ipApi.city() + ", " + ipApi.region() + ", " + ipApi.country_name();
-        System.out.println("- Location: " + location);
-        String coordinates = "- Coordinates: Lat " + ipApi.latitude() + ", Long " + ipApi.longitude();
-        System.out.println(coordinates);
+        return ipApi;
       } else {
         System.out.println("Error HTTP " + status);
       }
@@ -37,5 +41,6 @@ public class IpClient {
       Thread.currentThread().interrupt();
       e.printStackTrace();
     }
+    return null;
   }
 }

@@ -5,6 +5,13 @@ public class JsonParser {
   private final String s;
   private int i = 0;
 
+  /**
+   * Constructs a new {@code JsonParser} with the specified input string.
+   * If the provided string is {@code null}, it initializes the parser with an
+   * empty string.
+   *
+   * @param s the JSON string to be parsed, or {@code null} to use an empty string
+   */
   JsonParser(String s) {
     this.s = s != null ? s : "";
   }

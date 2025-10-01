@@ -13,6 +13,7 @@
 ✅ ANTONIO CENTELLES VIDAL	antonio.centelles@inetum.com
 ✅ RUBEN RODRIGUEZ CANALES	ruben.rodriguezc@inetum.com
 ⚠️ CARLOS FONTALBA GILABERT carlos.fontalba@inetum.com
+⚠️ LUIS ALBERTO HERNANDEZ GRACIA	luis-alberto.hernandez@inetum.com
 
 
 No han asistido 
@@ -20,5 +21,4 @@ No han asistido
 ❌ SERGIO RODRIGUEZ ARIAS	sergio.rodrigueza@inetum.com
 ❌ ANTONIO JOSE MEDINA BARBA	toni.medina@inetum.com
 ❌ MARIO BERLANGA IGLESIAS	mario.berlanga@inetum.com
-❌ LUIS ALBERTO HERNANDEZ GRACIA	luis-alberto.hernandez@inetum.com
 ❌ DAVID MOYANO LEAL	david.moyano@inetum.com

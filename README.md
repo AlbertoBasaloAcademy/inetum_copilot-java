@@ -26,6 +26,7 @@ A CLI educational tool that queries public APIs to provide basic information fro
 > [Ver PRD del proyecto AskBot](docs/ask-bot.PRD.md)
 > [Project Structure](docs/STRUCTURE.md)
 > [Project Backlog](docs/BACKLOG.md)
+> [Changelog](docs/CHANGELOG.md)
 
 ---
 

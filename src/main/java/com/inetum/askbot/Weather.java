@@ -10,9 +10,21 @@ import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Utility class for fetching and displaying weather information.
+ * Retrieves current weather data using the Open-Meteo API based on the user's
+ * location from IP.
+ */
 public class Weather {
-  private Weather() {}
+  private Weather() {
+  }
 
+  /**
+   * Fetches and displays current weather information for the user's location.
+   * First fetches IP location, then queries Open-Meteo API for weather data
+   * including temperature,
+   * precipitation probability, and weather condition.
+   */
   public static void fetchWeather() {
     IpApiResponse ipApi = IpClient.fetchIp();
     if (ipApi == null) {
@@ -69,6 +81,12 @@ public class Weather {
     }
   }
 
+  /**
+   * Extracts the temperature value from the current weather object.
+   *
+   * @param currentObj the current weather map from the API response
+   * @return the temperature as a double, or 0.0 if not found
+   */
   private static double extractTemperature(Object currentObj) {
     if (currentObj instanceof Map<?, ?> current) {
       Object tempVal = current.get("temperature");
@@ -79,6 +97,12 @@ public class Weather {
     return 0.0;
   }
 
+  /**
+   * Extracts the temperature unit from the current units object.
+   *
+   * @param unitsObj the current units map from the API response
+   * @return the temperature unit string, or "°C" if not found
+   */
   private static String extractTemperatureUnit(Object unitsObj) {
     if (unitsObj instanceof Map<?, ?> units) {
       Object unit = units.get("temperature");
@@ -89,6 +113,14 @@ public class Weather {
     return "°C";
   }
 
+  /**
+   * Finds the index of the current hour in the hourly time array.
+   * Matches the current UTC time (truncated to hour) with the time strings in the
+   * array.
+   *
+   * @param timeArr the list of time strings from the API
+   * @return the index of the current hour, or -1 if not found
+   */
   private static int findCurrentHourIndex(Object timeArr) {
     if (timeArr instanceof List<?> times) {
       String now = LocalDateTime.now(ZoneOffset.UTC).toString().substring(0, 13);
@@ -102,6 +134,13 @@ public class Weather {
     return -1;
   }
 
+  /**
+   * Extracts a numeric value at the specified index from an array.
+   *
+   * @param array the list to extract from
+   * @param index the index to extract at
+   * @return the value as a double, or 0.0 if not found or invalid
+   */
   private static double extractAtIndex(Object array, int index) {
     if (array instanceof List<?> list && index >= 0 && index < list.size()) {
       Object value = list.get(index);
@@ -112,6 +151,14 @@ public class Weather {
     return 0.0;
   }
 
+  /**
+   * Maps a weather code at the specified index to a human-readable condition
+   * string.
+   *
+   * @param array the list of weather codes
+   * @param index the index to map
+   * @return the condition string, or "Unknown" if not found
+   */
   private static String mapCodeToCondition(Object array, int index) {
     if (array instanceof List<?> list && index >= 0 && index < list.size()) {
       Object value = list.get(index);
@@ -122,6 +169,13 @@ public class Weather {
     return "Unknown";
   }
 
+  /**
+   * Maps a numeric weather code to a descriptive weather condition string.
+   * Uses the WMO weather interpretation codes.
+   *
+   * @param code the weather code from the API
+   * @return the corresponding weather condition description
+   */
   private static String mapWeatherCode(int code) {
     return switch (code) {
       case 0 -> "Clear sky";

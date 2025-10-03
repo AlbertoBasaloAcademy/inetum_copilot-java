@@ -7,10 +7,19 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandler;
 import java.util.Map;
 
+/**
+ * Utility class for fetching and displaying currency exchange rates.
+ * Retrieves exchange rates using the Frankfurter API based on the user's local
+ * currency from IP location.
+ */
 public class Money {
   private Money() {
   }
 
+  /**
+   * Fetches and displays currency exchange rates for the user's local currency.
+   * Shows rates against EUR, USD, GBP, and CHF.
+   */
   public static void fetchMoney() {
     IpApiResponse ipApi = IpClient.fetchIp();
     if (ipApi == null) {
@@ -57,6 +66,13 @@ public class Money {
     }
   }
 
+  /**
+   * Prints the exchange rate for a specific target currency.
+   *
+   * @param rates  the map of exchange rates from the API
+   * @param base   the base currency code
+   * @param target the target currency code
+   */
   private static void printRate(Map<?, ?> rates, String base, String target) {
     Object rateObj = rates.get(target);
     if (rateObj instanceof Number number) {

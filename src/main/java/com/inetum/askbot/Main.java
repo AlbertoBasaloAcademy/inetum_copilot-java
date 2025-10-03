@@ -1,6 +1,18 @@
 package com.inetum.askbot;
 
+/**
+ * Main entry point for the Ask Bot application.
+ * This application fetches IP information and optionally weather or currency
+ * data based on command line arguments.
+ */
 public class Main {
+  /**
+   * Main method that starts the application.
+   * Fetches IP information and processes command line arguments to fetch weather
+   * or currency data.
+   *
+   * @param args command line arguments: "weather" or "money"
+   */
   public static void main(String[] args) {
     System.out.println("# Ask Bot here, welcome!");
     IpClient.fetchIp();
@@ -20,6 +32,9 @@ public class Main {
     System.out.println("Bye!");
   }
 
+  /**
+   * Prints the help message showing available commands.
+   */
   private static void printHelpMessage() {
     System.out.println("## Available commands: ");
     System.out.println("  - `weather` : Fetch weather information");

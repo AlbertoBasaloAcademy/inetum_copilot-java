@@ -12,7 +12,8 @@ public class JsonParser {
    * If the provided string is {@code null}, it initializes the parser with an
    * empty string.
    *
-   * @param input the JSON string to be parsed, or {@code null} to use an empty string
+   * @param input the JSON string to be parsed, or {@code null} to use an empty
+   *              string
    */
   JsonParser(String input) {
     this.input = input != null ? input : "";
@@ -98,6 +99,7 @@ public class JsonParser {
           case 'r' -> sb.append('\r');
           case 't' -> sb.append('\t');
           case 'u' -> {
+            // Unicode escape sequence: backslash u followed by 4 hex digits
             if (index + 4 > input.length()) {
               throw error("Invalid unicode escape");
             }
@@ -119,7 +121,17 @@ public class JsonParser {
     throw error("Unterminated string");
   }
 
+  /**
+   * Parses a JSON number from the input string.
+   * Supports integers, decimals, and scientific notation.
+   * Returns Long for integers, Double for floating point numbers.
+   */
   private Number parseNumber() {
+    // JSON number parsing logic:
+    // 1. An optional minus sign for negative numbers.
+    // 2. Digits before and after an optional decimal point.
+    // 3. An optional exponent part, which is 'e' or 'E' followed by an optional
+    // plus or minus sign and one or more digits.
     int start = index;
     if (peek() == '-') {
       index++;

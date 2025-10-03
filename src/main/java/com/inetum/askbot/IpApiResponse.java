@@ -4,7 +4,8 @@ import java.util.Map;
 
 /**
  * Immutable record representing the response from the IP API.
- * Provides a fromJson factory that relies on the minimal JsonParser implemented here.
+ * Provides a fromJson factory that relies on the minimal JsonParser implemented
+ * here.
  */
 public record IpApiResponse(
     String ip,
@@ -35,6 +36,14 @@ public record IpApiResponse(
     String asn,
     String org) {
 
+  /**
+   * Factory method to create an IpApiResponse from a JSON string.
+   * Parses the JSON and extracts all fields, performing type conversions as
+   * needed.
+   *
+   * @param json the JSON string from the IP API
+   * @return a new IpApiResponse instance
+   */
   public static IpApiResponse fromJson(String json) {
     Map<String, Object> parsed = new JsonParser(json).parseObject();
     return new IpApiResponse(
@@ -62,7 +71,8 @@ public record IpApiResponse(
         (String) parsed.get("currency_name"),
         (String) parsed.get("languages"),
         (parsed.get("country_area") instanceof Number) ? ((Number) parsed.get("country_area")).doubleValue() : 0.0,
-        (parsed.get("country_population") instanceof Number) ? ((Number) parsed.get("country_population")).longValue() : 0L,
+        (parsed.get("country_population") instanceof Number) ? ((Number) parsed.get("country_population")).longValue()
+            : 0L,
         (String) parsed.get("asn"),
         (String) parsed.get("org"));
   }

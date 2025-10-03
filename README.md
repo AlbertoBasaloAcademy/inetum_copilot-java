@@ -24,6 +24,7 @@ A CLI educational tool that queries public APIs to provide basic information fro
 - location, weather, currency, and sun.
 
 > [Ver PRD del proyecto AskBot](docs/ask-bot.PRD.md)
+> [Project Structure](docs/STRUCTURE.md)
 
 ---
 

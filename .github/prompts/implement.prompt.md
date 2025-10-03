@@ -12,6 +12,7 @@ Read and follow the instructions with best practices and coding standards from:
 
 - #file:bst_clean-code.instructions.md
 - #file:lng_java.instructions.md
+- [Structure file](/docs/STRUCTURE.md)
 
 ## Workflow
 

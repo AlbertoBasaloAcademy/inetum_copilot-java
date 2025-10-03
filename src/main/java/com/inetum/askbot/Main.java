@@ -8,6 +8,9 @@ public class Main {
       if ("weather".equals(args[0])) {
         System.out.println("## Fetching weather information...");
         Weather.fetchWeather();
+      } else if ("money".equals(args[0])) {
+        System.out.println("## Fetching currency information...");
+        Money.fetchMoney();
       } else {
         printHelpMessage();
       }
@@ -20,5 +23,6 @@ public class Main {
   private static void printHelpMessage() {
     System.out.println("## Available commands: ");
     System.out.println("  - `weather` : Fetch weather information");
+    System.out.println("  - `money` : Fetch currency information");
   }
 }
